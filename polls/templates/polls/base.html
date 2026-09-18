@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Enquetes Django{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col items-center p-6 sm:p-10">
+  <header class="w-full max-w-xl mb-6 flex items-center justify-between border-b border-slate-200 pb-4">
+    <a href="{% url 'polls:index' %}" class="text-xl font-bold tracking-tight text-indigo-600 hover:text-indigo-700 flex items-center gap-2">
+      <span>⚡</span> Django Polls
+    </a>
+    <span class="text-xs font-semibold px-2.5 py-1 bg-indigo-50 text-indigo-700 rounded-full">v6.x</span>
+  </header>
+
+  <main class="w-full max-w-xl">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="mb-5 p-3.5 bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm rounded-xl font-medium shadow-sm flex items-center gap-2">
+          <span>✓</span> {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
